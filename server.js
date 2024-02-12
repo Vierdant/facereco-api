@@ -18,7 +18,9 @@ const postgres = knex({
     client: 'pg',
     connection: {
         host: process.env.DATABASE_URL,
-        ssl: true
+        ssl: {
+            rejectUnauthorized: false
+        }
     }
 });
 
@@ -123,7 +125,7 @@ app.post('/register', async (req, res) => {
 })
 
 app.listen(process.env.PORT || 5000, () => {
-    console.log('Server started.')
+    console.log('Server started')
 })
 
 function GetRating(positive, negative) {
