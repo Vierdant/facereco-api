@@ -16,8 +16,10 @@ dotenv.config()
 
 const postgres = knex({
     client: 'pg',
-    connection: process.env.DATABASE_URL,
-    searchPath: ['public'],
+    connection: {
+        host: process.env.DATABASE_URL,
+        ssl: true
+    }
 });
 
 const Users = () => postgres('users');
