@@ -16,7 +16,7 @@ dotenv.config()
 
 const postgres = knex({
     client: 'pg',
-    connection: process.env.PG_CONNECTION_STRING,
+    connection: process.env.DATABASE_URL,
     searchPath: ['public'],
 });
 
@@ -113,7 +113,7 @@ app.post('/register', async (req, res) => {
 })
 
 app.listen(process.env.PORT || 5000, () => {
-    console.log('API launched on port 9000')
+    console.log('Server started.')
 })
 
 function GetRating(positive, negative) {
